@@ -7,9 +7,21 @@ export class SignInStepPage {
 
   constructor (){
     this.emailField = $('#email');
+    this.passwordField = $('#passwd');
+    this.signInButton = $('#SubmitLogin > span');
   }
 
-  public async goToTshirtMenu(): Promise<void> {
-    await this.tShirtMenu.click();
+  private async fillCredentials(email, password): Promise<void> {
+    await this.emailField.sendKeys(email);
+    await this.passwordField.sendKeys(password);
+  }
+
+  private async goToAddress(): Promise<void> {
+    await this.signInButton.click();
+  }
+
+  public async signIn(email, password): Promise<void> {
+    await this.fillCredentials(email, password);
+    await this.goToAddress();
   }
 }
