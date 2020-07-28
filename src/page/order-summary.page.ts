@@ -1,13 +1,14 @@
 import { $, ElementFinder } from 'protractor';
 
 export class OrderSummaryPage {
-  private proccedCheckoutButton: ElementFinder;
+  private orderConfirmationText: ElementFinder;
 
   constructor () {
-    this.proccedCheckoutButton = $('.cart_navigation span');
+    this.orderConfirmationText = $('#center_column > div > p > strong');
   }
 
-  public async confirmAndCheckout(): Promise<void> {
-    await this.proccedCheckoutButton.click();
+  public async getTitle(): Promise<string> {
+    const title: string = await this.orderConfirmationText.getText();
+    return title;
   }
 }
