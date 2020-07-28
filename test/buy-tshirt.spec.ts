@@ -1,6 +1,7 @@
 import { $, browser } from 'protractor';
 import { MenuContentPage, ProductListPage, ProductAddedModalPage, OrderSummaryPage,
-  SignInStepPage, AddresStepPage, ShippingStepPage } from '../src/page';
+  SignInStepPage, AddresStepPage, ShippingStepPage, PaymentStepPage,
+  BankPaymentPage } from '../src/page';
 
 describe('Buy a t-shirt', () => {
   const menuContentPage: MenuContentPage = new MenuContentPage();
@@ -10,6 +11,8 @@ describe('Buy a t-shirt', () => {
   const signInStepPage: SignInStepPage = new SignInStepPage();
   const addresStepPage: AddresStepPage = new AddresStepPage();
   const shippingStepPage: ShippingStepPage = new ShippingStepPage();
+  const paymentStepPage: PaymentStepPage = new PaymentStepPage();
+  const bankPaymentPage: BankPaymentPage = new BankPaymentPage();
   beforeEach(() => {
     jasmine.DEFAULT_TIMEOUT_INTERVAL = 120000;
   });
@@ -37,9 +40,9 @@ describe('Buy a t-shirt', () => {
 
     await shippingStepPage.goToPaymentMenu();
     await(browser.sleep(3000));
-    await $('#HOOK_PAYMENT > div:nth-child(1) > div > p > a').click();
+    await paymentStepPage.payByBankwire();
     await(browser.sleep(3000));
-    await $('#cart_navigation > button > span').click();
+    await bankPaymentPage.confirmOrder();
     await(browser.sleep(3000));
 
     await expect($('#center_column > div > p > strong').getText())
