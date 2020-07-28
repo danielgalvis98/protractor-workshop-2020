@@ -32,10 +32,10 @@ describe('Buy a t-shirt', () => {
     await addresStepPage.goToShippingStep();
     await(browser.sleep(3000));
 
-    shippingStepPage.goToPaymentMenu();
+    await shippingStepPage.acceptTermsOfService();
     await(browser.sleep(3000));
 
-    await $('#form > p > button > span').click();
+    await shippingStepPage.goToPaymentMenu();
     await(browser.sleep(3000));
     await $('#HOOK_PAYMENT > div:nth-child(1) > div > p > a').click();
     await(browser.sleep(3000));
