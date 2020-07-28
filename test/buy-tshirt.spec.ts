@@ -1,6 +1,6 @@
 import { $, browser } from 'protractor';
 import { MenuContentPage, ProductListPage, ProductAddedModalPage, OrderSummaryPage,
-  SignInStepPage } from '../src/page';
+  SignInStepPage, AddresStepPage, ShippingStepPage } from '../src/page';
 
 describe('Buy a t-shirt', () => {
   const menuContentPage: MenuContentPage = new MenuContentPage();
@@ -8,6 +8,8 @@ describe('Buy a t-shirt', () => {
   const productAddedModalPage: ProductAddedModalPage = new ProductAddedModalPage();
   const orderSummaryPage: OrderSummaryPage = new OrderSummaryPage();
   const signInStepPage: SignInStepPage = new SignInStepPage();
+  const addresStepPage: AddresStepPage = new AddresStepPage();
+  const shippingStepPage: ShippingStepPage = new ShippingStepPage();
   beforeEach(() => {
     jasmine.DEFAULT_TIMEOUT_INTERVAL = 120000;
   });
@@ -27,10 +29,10 @@ describe('Buy a t-shirt', () => {
     await signInStepPage.signIn('aperdomobo@gmail.com', 'WorkshopProtractor');
     await(browser.sleep(3000));
 
-    await $('#center_column > form > p > button > span').click();
+    await addresStepPage.goToShippingStep();
     await(browser.sleep(3000));
 
-    await $('#cgv').click();
+    shippingStepPage.goToPaymentMenu();
     await(browser.sleep(3000));
 
     await $('#form > p > button > span').click();

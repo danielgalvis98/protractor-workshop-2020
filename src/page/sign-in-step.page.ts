@@ -11,17 +11,17 @@ export class SignInStepPage {
     this.signInButton = $('#SubmitLogin > span');
   }
 
-  private async fillCredentials(email, password): Promise<void> {
+  private async fillCredentials(email: string, password: string): Promise<void> {
     await this.emailField.sendKeys(email);
     await this.passwordField.sendKeys(password);
   }
 
-  private async goToAddress(): Promise<void> {
+  private async goToAddressPage(): Promise<void> {
     await this.signInButton.click();
   }
 
-  public async signIn(email, password): Promise<void> {
+  public async signIn(email: string, password: string): Promise<void> {
     await this.fillCredentials(email, password);
-    await this.goToAddress();
+    await this.goToAddressPage();
   }
 }
