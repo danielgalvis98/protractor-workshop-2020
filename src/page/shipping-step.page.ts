@@ -5,7 +5,7 @@ export class ShippingStepPage {
   private proceedCheckoutButton: ElementFinder;
 
   constructor () {
-    this.proceedCheckoutButton = $('#cgv');
+    this.acceptTermsOfServiceCheckbox = $('#cgv');
     this.proceedCheckoutButton = $('#form > p > button > span');
   }
 

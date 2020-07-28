@@ -5,7 +5,7 @@ export class SignInStepPage {
   private passwordField: ElementFinder;
   private signInButton: ElementFinder;
 
-  constructor (){
+  constructor () {
     this.emailField = $('#email');
     this.passwordField = $('#passwd');
     this.signInButton = $('#SubmitLogin > span');

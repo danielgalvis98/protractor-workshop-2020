@@ -3,7 +3,7 @@ import { $, ElementFinder } from 'protractor';
 export class OrderSummaryPage {
   private proccedCheckoutButton: ElementFinder;
 
-  constructor (){
+  constructor () {
     this.proccedCheckoutButton = $('.cart_navigation span');
   }
 

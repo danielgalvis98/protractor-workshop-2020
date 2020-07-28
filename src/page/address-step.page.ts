@@ -3,7 +3,7 @@ import { $, ElementFinder } from 'protractor';
 export class AddresStepPage {
   private proceedCheckoutButton: ElementFinder;
 
-  constructor (){
+  constructor () {
     this.proceedCheckoutButton = $('#center_column > form > p > button > span');
   }
 
