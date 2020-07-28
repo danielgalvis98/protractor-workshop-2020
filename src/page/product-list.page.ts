@@ -10,4 +10,8 @@ export class ProductListPage {
   public async addShirtToCart(): Promise<void> {
     await this.addToCartButton.click();
   }
+
+  public async getAddToCartButton(): Promise<ElementFinder> {
+    return this.addToCartButton;
+  }
 }

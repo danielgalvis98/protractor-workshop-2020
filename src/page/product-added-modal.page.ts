@@ -10,4 +10,8 @@ export class ProductAddedModalPage {
   public async proccedToCheckout(): Promise<void> {
     await this.proccedCheckoutButton.click();
   }
+
+  public async getProccedCheckoutButton(): Promise<ElementFinder> {
+    return this.proccedCheckoutButton;
+  }
 }
