@@ -5,8 +5,10 @@ export class PaymentStepPage {
   private payByCheckOption: ElementFinder;
 
   constructor () {
-    this.payByBankWireOption = $('#HOOK_PAYMENT > div:nth-child(1) > div > p > a');
-    this.payByCheckOption = $('#HOOK_PAYMENT > div:nth-child(2) > div > p > a');
+    /* It is not a good idea to select the items by their position, so we are to locate them
+    with id's and class names more specifics to them */
+    this.payByBankWireOption = $('#HOOK_PAYMENT a.bankwire');
+    this.payByCheckOption = $('#HOOK_PAYMENT a.cheque');
   }
 
   public async payByBankwire(): Promise<void> {
