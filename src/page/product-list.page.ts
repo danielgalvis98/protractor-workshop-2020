@@ -8,7 +8,7 @@ export class ProductListPage {
      it can easily change from column. It is better to select the div that explicitly contains
      the product list. Also, the speecific locator of the button can be dangerous if there are more
      products, so it's better if we specify the button from which exact product we can select*/
-    this.addToCartButton = $('ul.product_list.grid.row a[data-id-product="1"]');
+    this.addToCartButton = $('ul.product_list a[data-id-product="1"]');
   }
 
   public async addShirtToCart(): Promise<void> {
