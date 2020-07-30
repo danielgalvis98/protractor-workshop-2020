@@ -9,7 +9,7 @@ export class OrderSummaryPage {
     to be to much precise. However, it can still be improved by being more specific about the
     parent elements. Also, I will remove the #center_column selector since the advice can change
     from position.*/
-    this.orderConfirmationText = $('p.cheque-indent > strong');
+    this.orderConfirmationText = $('p.cheque-indent');
   }
 
   public async getTitle(): Promise<string> {

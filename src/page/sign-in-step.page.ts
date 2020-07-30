@@ -10,7 +10,7 @@ export class SignInStepPage {
     with the one for register, but as they are id's, they are different. */
     this.emailField = $('#email');
     this.passwordField = $('#passwd');
-    this.signInButton = $('#SubmitLogin > span');
+    this.signInButton = $('#SubmitLogin');
   }
 
   private async fillCredentials(email: string, password: string): Promise<void> {
