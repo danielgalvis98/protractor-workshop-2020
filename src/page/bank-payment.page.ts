@@ -1,10 +1,10 @@
-import { $, ElementFinder } from 'protractor';
+import { ElementFinder, element, by } from 'protractor';
 
 export class BankPaymentPage {
   private confirmOrderButton: ElementFinder;
 
   constructor () {
-    this.confirmOrderButton = $('#cart_navigation > button > span');
+    this.confirmOrderButton = element(by.buttonText('I confirm my order'));
   }
 
   public async confirmOrder(): Promise<void> {
