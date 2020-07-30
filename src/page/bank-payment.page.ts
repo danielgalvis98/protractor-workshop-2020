@@ -7,7 +7,7 @@ export class BankPaymentPage {
     /* Here the button doesn't have any id, title or name, so it is difficult to locate it
     on a better way than the one already implemented. Anyway, I would recommend to the developper to
     include some id to the button */
-    this.confirmOrderButton = $('#cart_navigation > button > span');
+    this.confirmOrderButton = $('#cart_navigation > button');
   }
 
   public async confirmOrder(): Promise<void> {

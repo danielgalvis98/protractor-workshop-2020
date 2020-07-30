@@ -8,7 +8,7 @@ export class SummaryStepPage {
   should the span be.
   */
   constructor () {
-    this.proccedCheckoutButton = $('.cart_navigation > a[title="Proceed to checkout"] > span');
+    this.proccedCheckoutButton = $('.cart_navigation > a[title="Proceed to checkout"]');
   }
 
   public async confirmAndCheckout(): Promise<void> {

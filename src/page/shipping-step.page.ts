@@ -12,7 +12,7 @@ export class ShippingStepPage {
 
     /* Respecting this button, it has te same problem as the one on the addres step page,
     so I will correct it the same way. */
-    this.proceedCheckoutButton = $('#form > p.cart_navigation > button[name="processCarrier"] > span');
+    this.proceedCheckoutButton = $('p.cart_navigation > button[name="processCarrier"]');
   }
 
   public async acceptTermsOfService(): Promise<void> {
