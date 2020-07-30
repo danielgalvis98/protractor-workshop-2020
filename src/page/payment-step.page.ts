@@ -5,8 +5,6 @@ export class PaymentStepPage {
   private payByCheckOption: ElementFinder;
 
   constructor () {
-    /* It is not a good idea to select the items by their position, so we are to locate them
-    with id's and class names more specifics to them */
     this.payByBankWireOption = $('#HOOK_PAYMENT a.bankwire');
     this.payByCheckOption = $('#HOOK_PAYMENT a.cheque');
   }

@@ -5,13 +5,7 @@ export class ShippingStepPage {
   private proceedCheckoutButton: ElementFinder;
 
   constructor () {
-    /* I think the selector of the checkbox could be left like it is, but the name is not
-    really clear and maybe can be confused if for some other reasons other checkbocks are inserted.
-    So, I add the specification of where it is supposed to be located */
     this.acceptTermsOfServiceCheckbox = $('#cgv');
-
-    /* Respecting this button, it has te same problem as the one on the addres step page,
-    so I will correct it the same way. */
     this.proceedCheckoutButton = $('button[name="processCarrier"]');
   }
 
