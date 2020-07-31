@@ -1,4 +1,4 @@
-import { ElementFinder, ElementArrayFinder, element, by } from 'protractor';
+import { ElementFinder, ElementArrayFinder, element, by, browser, ExpectedConditions } from 'protractor';
 
 export class PersonalInformationPage {
   private firstNameInput: ElementFinder;
@@ -82,6 +82,16 @@ export class PersonalInformationPage {
     await this.selectContinent(fillValues.continent);
     await this.selectSeleniumComands(fillValues.commands);
     await this.button.click();
+  }
+
+  public async manageAlert(): Promise<void> {
+    await browser.wait(ExpectedConditions.alertIsPresent(), 10000);
+    const alert = await browser.switchTo().alert();
+    await alert.accept();
+  }
+
+  public async getTitle(): Promise<string> {
+    return await browser.getTitle();
   }
 
 }

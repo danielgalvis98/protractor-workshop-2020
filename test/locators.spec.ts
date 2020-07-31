@@ -1,4 +1,4 @@
-import { browser } from 'protractor';
+import { browser, } from 'protractor';
 import { PersonalInformationPage } from '../src/page';
 
 describe('When open the registration page', () => {
@@ -7,8 +7,8 @@ describe('When open the registration page', () => {
   });
 
   describe('And fill the form of personal information', async() => {
-    it('Then sould wooork', async () => {
-      const personalInformationPage: PersonalInformationPage = new PersonalInformationPage();
+    const personalInformationPage: PersonalInformationPage = new PersonalInformationPage();
+    beforeAll(async () => {
       await personalInformationPage.fillForm({
         firstName: 'Alejandro',
         lastName: 'Perdomo',
@@ -24,6 +24,10 @@ describe('When open the registration page', () => {
           'Wait Commands',
           'WebElement Commands']
       });
+      await personalInformationPage.manageAlert();
+    });
+    it('Then sould wooork', async () => {
+      await expect(personalInformationPage.getTitle()).toBe('Selenium - Automation Practice Form - Tutorialspoint');
     });
   });
 });
