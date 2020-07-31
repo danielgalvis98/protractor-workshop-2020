@@ -1,4 +1,5 @@
 import { ElementFinder, ElementArrayFinder, element, by, browser, ExpectedConditions } from 'protractor';
+import { IPersonRegister } from '../interfaces/Iperson-register';
 
 export class PersonalInformationPage {
   private firstNameInput: ElementFinder;
@@ -66,7 +67,7 @@ export class PersonalInformationPage {
     });
   }
 
-  public async fillForm(fillValues): Promise<void> {
+  public async fillForm(fillValues: IPersonRegister): Promise<void> {
     this.dateInput;
     await this.firstNameInput.sendKeys(fillValues.firstName);
     await this.lastNameInput.sendKeys(fillValues.lastName);
