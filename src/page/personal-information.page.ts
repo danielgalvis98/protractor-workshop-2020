@@ -1,6 +1,6 @@
-import { ElementFinder, ElementArrayFinder, element, by } from "protractor";
+import { ElementFinder, ElementArrayFinder, element, by } from 'protractor';
 
-export class ProductAddedModalPage {
+export class PersonalInformationPage {
   private firstNameInput: ElementFinder;
   private lastNameInput: ElementFinder;
   private sexOptions: ElementArrayFinder;
@@ -20,7 +20,7 @@ export class ProductAddedModalPage {
   }
 
   constructor() {
-    this.firstNameInput = element(by.name('firstName'));
+    this.firstNameInput = element(by.name('firstname'));
     this.lastNameInput = element(by.name('lastname'));
     this.sexOptions = element.all(by.name('sex'));
     this.yearsOfExperienceOptions = element.all(by.name('exp'));
@@ -52,17 +52,27 @@ export class ProductAddedModalPage {
   }
 
   private async selectContinent(desiredContinent: string): Promise<void> {
-    const continent = await this.continents.element(by.linkText(desiredContinent));
-    await continent.click();
+    const selectedContinent = await this.continents.all(by.tagName('option')).filter(
+      async (elem) => {
+      const  continent = await elem.getText();
+      return continent === desiredContinent;
+    }).first();
+    await selectedContinent.click();
   }
 
   private async selectSeleniumComands(desiredComands: string[]): Promise<void> {
-    desiredComands.forEach(async (command) => {
-      await this.seleniumCommands.element(by.linkText(command)).click();
-    })
+    const selectedCommands: ElementFinder[] = await this.seleniumCommands.all(
+      by.tagName('option')).filter(async (elem) => {
+        const command = await elem.getText();
+        return desiredComands.includes(command);
+      });
+    selectedCommands.forEach(async (elem) => {
+      await elem.click();
+    });
   }
 
   public async fillForm(fillValues): Promise<void> {
+    this.dateInput;
     await this.firstNameInput.sendKeys(fillValues.firstName);
     await this.lastNameInput.sendKeys(fillValues.lastName);
     await this.selectRadioButton(fillValues.sex, this.sexOptions);
