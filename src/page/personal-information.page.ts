@@ -52,11 +52,8 @@ export class PersonalInformationPage {
   }
 
   private async selectContinent(desiredContinent: string): Promise<void> {
-    const selectedContinent = await this.continents.all(by.tagName('option')).filter(
-      async (elem) => {
-      const  continent = await elem.getText();
-      return continent === desiredContinent;
-    }).first();
+    const selectedContinent = await this.continents.element(
+      by.cssContainingText('option', desiredContinent));
     await selectedContinent.click();
   }
 
@@ -79,8 +76,8 @@ export class PersonalInformationPage {
     await this.selectRadioButton(fillValues.experience.toString(), this.yearsOfExperienceOptions);
     await this.selectAllCheckBoxs(fillValues.profession, this.professionOptions);
     await this.selectAllCheckBoxs(fillValues.tools, this.seleniumTools);
-    await this.selectContinent(fillValues.continent);
     await this.selectSeleniumComands(fillValues.commands);
+    await this.selectContinent(fillValues.continent);
     await this.button.click();
   }
 
@@ -91,7 +88,6 @@ export class PersonalInformationPage {
   }
 
   public async getTitle(): Promise<string> {
-    await browser.sleep(3000);
     return await browser.getTitle();
   }
 
