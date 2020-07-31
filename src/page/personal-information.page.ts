@@ -8,7 +8,7 @@ export class ProductAddedModalPage {
   private dateInput: ElementFinder;
   private professionOptions: ElementArrayFinder;
   private seleniumTools: ElementArrayFinder;
-  private continent: ElementFinder;
+  private continents: ElementFinder;
   private seleniumCommands: ElementFinder;
   private button: ElementFinder;
 
@@ -27,9 +27,51 @@ export class ProductAddedModalPage {
     this.dateInput = this.selectInput('Date:');
     this.professionOptions = element.all(by.name('profession'));
     this.seleniumTools = element.all(by.name('tool'));
-    this.continent = element(by.name('continents'));
+    this.continents = element(by.name('continents'));
     this.seleniumCommands = element(by.name('selenium_commands'));
     this.button = element(by.name('submit'));
+  }
+
+  private async selectRadioButton (
+    desiredOption: string, options: ElementArrayFinder): Promise<void> {
+    await options.filter(async (elem) => {
+      const value = await elem.getAttribute('value');
+      return value === desiredOption;
+    }).first().click();
+  }
+
+  private async selectAllCheckBoxs (
+    desiredOptions: string[], options: ElementArrayFinder): Promise<void> {
+    const optionsToSelect: ElementFinder[] = await options.filter(async (elem) => {
+      const value = await elem.getAttribute('value');
+      return desiredOptions.includes(value);
+    });
+    optionsToSelect.forEach(async (elem) => {
+      await elem.click();
+    });
+  }
+
+  private async selectContinent(desiredContinent: string): Promise<void> {
+    const continent = await this.continents.element(by.linkText(desiredContinent));
+    await continent.click();
+  }
+
+  private async selectSeleniumComands(desiredComands: string[]): Promise<void> {
+    desiredComands.forEach(async (command) => {
+      await this.seleniumCommands.element(by.linkText(command)).click();
+    })
+  }
+
+  public async fillForm(fillValues): Promise<void> {
+    await this.firstNameInput.sendKeys(fillValues.firstName);
+    await this.lastNameInput.sendKeys(fillValues.lastName);
+    await this.selectRadioButton(fillValues.sex, this.sexOptions);
+    await this.selectRadioButton(fillValues.experience.toString(), this.yearsOfExperienceOptions);
+    await this.selectAllCheckBoxs(fillValues.profession, this.professionOptions);
+    await this.selectAllCheckBoxs(fillValues.tools, this.seleniumTools);
+    await this.selectContinent(fillValues.continent);
+    await this.selectSeleniumComands(fillValues.commands);
+    await this.button.click();
   }
 
 }
