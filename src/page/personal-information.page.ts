@@ -91,6 +91,7 @@ export class PersonalInformationPage {
   }
 
   public async getTitle(): Promise<string> {
+    await browser.sleep(3000);
     return await browser.getTitle();
   }
 
