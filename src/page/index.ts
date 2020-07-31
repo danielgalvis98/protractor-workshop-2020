@@ -1,3 +1,4 @@
+// Shopping site
 export { MenuContentPage } from './menu-content.page';
 export { ProductListPage } from './product-list.page';
 export { ProductAddedModalPage } from './product-added-modal.page';
@@ -8,3 +9,6 @@ export { ShippingStepPage } from './shipping-step.page';
 export { PaymentStepPage } from './payment-step.page';
 export { BankPaymentPage } from './bank-payment.page';
 export { SummaryStepPage } from './summary-step.page';
+
+// Form site
+export { PersonalInformationPage } from './personal-information.page';
