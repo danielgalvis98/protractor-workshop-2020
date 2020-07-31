@@ -24,9 +24,9 @@ describe('When open the registration page', () => {
           'Wait Commands',
           'WebElement Commands']
       });
-      await personalInformationPage.manageAlert();
     });
-    it('Then sould wooork', async () => {
+    it('Then registration should be confirmed', async () => {
+      await personalInformationPage.manageAlert();
       await expect(personalInformationPage.getTitle()).toBe('Selenium - Automation Practice Form - Tutorialspoint');
     });
   });
