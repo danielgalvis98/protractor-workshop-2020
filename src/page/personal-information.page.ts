@@ -75,8 +75,9 @@ export class PersonalInformationPage {
     await this.selectRadioButton(fillValues.experience.toString(), this.yearsOfExperienceOptions);
     await this.selectAllCheckBoxs(fillValues.profession, this.professionOptions);
     await this.selectAllCheckBoxs(fillValues.tools, this.seleniumTools);
-    await this.selectSeleniumComands(fillValues.commands);
     await this.selectContinent(fillValues.continent);
+    await this.selectSeleniumComands(fillValues.commands);
+    await browser.wait(ExpectedConditions.elementToBeClickable(this.button), 5000);
     await this.button.click();
   }
 
