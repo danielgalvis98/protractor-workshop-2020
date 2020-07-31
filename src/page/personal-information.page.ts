@@ -52,19 +52,17 @@ export class PersonalInformationPage {
   }
 
   private async selectContinent(desiredContinent: string): Promise<void> {
-    const selectedContinent = await this.continents.element(
+    const selectedContinent: ElementFinder = await this.continents.element(
       by.cssContainingText('option', desiredContinent));
     await selectedContinent.click();
   }
 
   private async selectSeleniumComands(desiredComands: string[]): Promise<void> {
-    const selectedCommands: ElementFinder[] = await this.seleniumCommands.all(
-      by.tagName('option')).filter(async (elem) => {
-        const command = await elem.getText();
-        return desiredComands.includes(command);
-      });
-    selectedCommands.forEach(async (elem) => {
-      await elem.click();
+    desiredComands.forEach(async (comandName) => {
+      const comandObject: ElementFinder = await this.seleniumCommands.element(
+        by.cssContainingText('option', comandName)
+      );
+      await comandObject.click();
     });
   }
 
