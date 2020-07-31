@@ -16,9 +16,10 @@ describe('When open the store page', () => {
       const productListPage: ProductListPage = new ProductListPage();
       const productAddedModalPage: ProductAddedModalPage = new ProductAddedModalPage();
       const summaryStepPage: SummaryStepPage = new SummaryStepPage();
+      const products: string[] = ['Faded Short Sleeve T-shirts'];
 
       await menuContentPage.goToTshirtMenu();
-      await productListPage.addShirtToCart();
+      await productListPage.selectProduct(products[0]);
       await productAddedModalPage.proccedToCheckout();
       await summaryStepPage.confirmAndCheckout();
     });
