@@ -12,3 +12,6 @@ export { SummaryStepPage } from './summary-step.page';
 
 // Form site
 export { PersonalInformationPage } from './personal-information.page';
+
+// demoqa page
+export { IFramePage } from './i-frame.page';
